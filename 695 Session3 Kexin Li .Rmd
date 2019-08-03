@@ -1,0 +1,34 @@
+---
+title: "695Session3"
+author: "Kexin Li"
+date: "2019/8/3"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+income<-read.csv("/Users/katherine/Desktop/income.csv")
+head(income)
+summary(income)
+```
+
+```{r}
+
+library(readr)
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+library(reshape2)
+hist(as.numeric(income$M_weekly))
+hist(as.numeric(income$F_weekly))
+```
+
+```{r}
+income %>% 
+    gather(key, value, 2:7) %>% 
+    separate(key, into=c("gender", "class"), sep="_") 
+```
+
